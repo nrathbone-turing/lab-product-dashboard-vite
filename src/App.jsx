@@ -17,7 +17,8 @@ const App = () => {
   const filteredProducts = filterInStock
     ? products.filter(product => product.inStock)
     : products;
-
+  
+  // Implement logic for Remove button to delete a product element from the container
   const handleRemoveProduct = (idToRemove) => {
     setProducts(products.filter(product => product.id !== idToRemove));
   };
@@ -29,7 +30,7 @@ const App = () => {
       <button onClick={() => setFilterInStock(false)}>All</button>
       <button onClick={() => setFilterInStock(true)}>In Stock Only</button>
 
-      {/* TODO: Render the ProductList component and pass filtered products */}
+      {/* Render the ProductList component and pass filtered products */}
       <ProductList products={filteredProducts} onRemove={handleRemoveProduct} />
       
     </div>
