@@ -23,10 +23,14 @@ test('displays all products initially', () => {
 })
 
 test('applies conditional styling for out-of-stock products', () => {
-  render(<App />)
-  const outOfStockProduct = screen.getByText(/Phone/i) // Make sure "Phone" exists in sampleProducts
-  expect(outOfStockProduct.closest('div')).toHaveClass('outOfStockClass')
-})
+  render(<App />);
+
+  // Use test ID added in ProductCard
+  const outOfStockCard = screen.getByTestId('product-card-phone');
+
+  // Match compiled class name instead of expecting literal string because instructions said to use CSS modules...
+  expect(outOfStockCard.className).toMatch(/outOfStockClass/);
+});
 
 test('removes product from the dashboard when "Remove" button is clicked', () => {
   render(<App />)
